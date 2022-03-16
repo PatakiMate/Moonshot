@@ -1,6 +1,7 @@
 :root {
   --font-size: 0;
-  --main-color: #ff3665;
+  --main-color: #008ea1;
+  /* #ff3665; */
 }
 
 html, body { 
@@ -147,6 +148,7 @@ p {
 }
 
 .rocket {
+  filter: hue-rotate(200deg);
     --animation-speed: 1s;
     height: 100%;
     width: 100%;

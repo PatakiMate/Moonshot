@@ -99,7 +99,10 @@ function notPressingDown(e) {
     if(counter < crashtime) {
     balance = Math.round(balance + bet * counter / 200);
     }
+    console.log("Screen: " + getPanel("start-screen").style.display);
+    if(getPanel("start-screen").style.display != "block") {
     setListeners(false);
+    }
     //stopPlaying();
     bigButton.style.setProperty("background-color",  "var(--main-color)");
     console.log("Not pressing!");
@@ -119,7 +122,11 @@ function runTimer() {
             playExplosion();
         }
         if(counter < crashtime) {
-            rocket.style.setProperty("--animation-speed", (1 / (counter / 500)) + "s");
+            if((counter / 200) > 1) {
+            rocket.style.setProperty("--animation-speed", (1 / (counter / 200)) + "s");
+            } else {
+                rocket.style.setProperty("--animation-speed", (1) + "s");
+            }
         }
         score.innerHTML =  (counter / 200).toFixed(2) + "x";
     }, 10);
@@ -152,6 +159,7 @@ function startPlaying() {
 }
 
 function selectBet(betId) {
+    setListeners(true);
     console.log("Select bet: " + betId);
     const holder = document.getElementById("bet-holder");
     for (i = 0; i < holder.children.length; i++) {
