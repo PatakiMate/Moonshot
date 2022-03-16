@@ -1,0 +1,166 @@
+:root {
+  --font-size: 0;
+  --main-color: #ff3665;
+}
+
+html, body { 
+    height: 100%; 
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body, .square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  min-height: 100vh;
+  background-color: black;
+  padding: 0;
+  margin: 0;
+}
+
+.square {
+  font-size: var(--font-size);
+  width: 100vmin;
+  height: 100vmin;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+.start-screen {
+  visibility: visible;
+  height: 100%;
+  width: 100%;
+  /* background-color: black; */
+  margin: 0;
+  padding: 0;
+}
+
+.big-button {
+  font-size: var(--font-size);
+  border-color: white;
+  border-width: 0.1em;
+  border-style: solid;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  background-color: var(--main-color);
+  position:absolute;
+  width: 9em;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.top-text{
+  position:absolute;
+  top: .5em;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.bet-holder {
+  column-count: 4;
+  column-gap: 0.5em;
+}
+
+.bet-block {
+  background-color:var(--main-color);
+  border-style: solid;
+  border-color: white;
+  border-width: 0.1em;
+  margin: 0;
+  padding: 0;
+}
+
+.reset-button {
+  background-color: var(--main-color);
+  border-style: solid;
+  border-color: white;
+  border-width: 0.1em;
+  margin-top: .5em;
+  margin-bottom: 1em;
+  padding: 0;
+}
+
+h1 {
+font-family: pixel;
+color: white;
+text-align: center;
+font-size: 1em;
+}
+
+h2 {
+  font-family: pixel;
+  color: white;
+  text-align: center;
+  font-size: .6em;
+}
+
+h3 {
+  font-family: pixel;
+  color: white;
+  text-align: center;
+  font-size: .3em;
+}
+
+p {
+  font-family: pixel;
+  color: white;
+  text-align: center;
+  font-size: .3em;
+  margin: 0;
+  padding: 10px;
+}
+
+.start-text-holder {
+  display: block;
+  padding: .5em;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rocket {
+    --animation-speed: 1s;
+    height: 100%;
+    width: 100%;
+    background: url("assets/spaceship-background.png") 0 0 no-repeat;
+    background-size: 1200%;
+    animation: anim-ss steps(11) var(--animation-speed) infinite;
+}
+
+.explosion {
+  --animation-speed: .5s;
+    visibility: hidden;
+    height: 100%;
+    width: 100%;
+    background: url("assets/explosion.png") 0 0 no-repeat;
+    background-size: 1200%;
+    animation: anim-ss steps(11) var(--animation-speed) infinite;
+}
+
+@keyframes anim-ss { 0% {background-position: 0%;} 100% {background-position: 100%;} }
+
+@font-face {
+  font-family: pixel;
+  src: url(assets/Minecraft.ttf);
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

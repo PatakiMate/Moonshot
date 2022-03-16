@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Moonshot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="square unselectable" id="start-screen">
+        <div class="start-screen center">
+            <div class="start-text-holder">
+                <h1 class="top-text">Moonshot</h1>
+                <h2 id="balance">Current Balance: 10.000</h2>
+                <div class="bet-holder" id="bet-holder">
+                    <div class="bet-block" id="bet-1" onclick="selectBet('bet-1')">
+                        <p>10</p>
+                    </div>
+                    <div class="bet-block" id="bet-2" onclick="selectBet('bet-2')">
+                        <p>100</p>
+                    </div>
+                    <div class="bet-block" id="bet-3" onclick="selectBet('bet-3')">
+                        <p>1000</p>
+                    </div>
+                    <div class="bet-block" id="bet-4" onclick="selectBet('bet-4')">
+                        <p>All in</p>
+                    </div>
+                </div>
+                <div class="reset-button" onclick="resetBalance()">
+                    <p>Reset Balance</p>
+                </div>
+                <h3>Hold the screen as long as you can but you can explode anytime!</h3>
+            </div>
+        </div>
+    </div>
+    <div class="square" id="game-screen">
+        <div class="rocket " id="rocket">
+            <div class="top-text">
+                <h2 id="score">Time: 1.1</h2>
+                <h3 id="release">Releaset at: 200</h3>
+            </div>
+            <div class="explosion" id="explosion"></div>
+        </div>
+    </div>
+    <div class="big-button" id="big-button">
+        <p>Press and Hold this button</p>
+    </div>
+    <script src="game.js"></script>
+
+</body>
+
+</html>
