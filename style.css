@@ -65,6 +65,17 @@ body {
   right: 0;
 }
 
+.score-holder{
+  position:absolute;
+  top: .5em;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  align-items: center;
+  justify-items: center;
+}
+
 .bet-holder {
   column-count: 4;
   column-gap: 0.5em;
@@ -117,6 +128,11 @@ p {
   font-size: .3em;
   margin: 0;
   padding: 10px;
+}
+
+.score {
+  text-align: left;
+  padding-left: 45%;
 }
 
 .start-text-holder {

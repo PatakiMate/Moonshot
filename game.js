@@ -95,7 +95,7 @@ function clamp(value, min, max) {
 function notPressingDown(e) {
     e.preventDefault();
     release.style.visibility = "visible";
-    release.innerHTML = "Release time: " + counter;
+    release.innerHTML = "Release multiplier: " + (counter / 200).toFixed(2) + "x";
     if(counter < crashtime) {
     balance = Math.round(balance + bet * counter / 200);
     }
@@ -121,7 +121,7 @@ function runTimer() {
         if(counter < crashtime) {
             rocket.style.setProperty("--animation-speed", (1 / (counter / 500)) + "s");
         }
-        score.innerHTML = "Time: " + counter;
+        score.innerHTML =  (counter / 200).toFixed(2) + "x";
     }, 10);
 }
 function playExplosion() {
