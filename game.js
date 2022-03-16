@@ -5,6 +5,7 @@ let bigButton = document.getElementById("big-button");
 let score = document.getElementById("score");
 let release = document.getElementById("release");
 let balanceText = document.getElementById("balance");
+let buttonText = document.getElementById("button-text");
 let timerID;
 let counter = 0;
 let explosionCounter = 0;
@@ -103,6 +104,7 @@ function notPressingDown(e) {
     if(getPanel("start-screen").style.display != "block") {
     setListeners(false);
     }
+    buttonText.innerHTML = "Wait for results...";
     //stopPlaying();
     bigButton.style.setProperty("background-color",  "var(--main-color)");
     console.log("Not pressing!");
@@ -176,6 +178,7 @@ function playExplosion() {
 function stopPlaying() {
     balanceText.innerHTML = "Current Balance: " + balance;
     setPanel("start-screen");
+    buttonText.innerHTML = "Press and Hold here!";
     cancelAnimationFrame(timer);
     counter = 0;
     setListeners(true);
