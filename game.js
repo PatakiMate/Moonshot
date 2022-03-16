@@ -31,8 +31,6 @@ let screens = new Array();
 
 
 
-
-
 screens.push(document.getElementById("start-screen"));
 screens.push(document.getElementById("game-screen"));
 window.onload = setPanel("start-screen");
@@ -47,6 +45,8 @@ let box = document.querySelector('.square');
 let width = box.offsetWidth;
 console.log("width: " + width);
 document.documentElement.style.setProperty('--font-size', width / 10 + "px");
+
+
 //box.style.setProperty("font-size", width / 10 + "px");
 
 
@@ -108,29 +108,58 @@ function notPressingDown(e) {
     console.log("Not pressing!");
 }
 
-function runTimer() {
-    setPanel("game-screen");
-    countFunction = setInterval(() => {
-        counter++;
-        // if (counter == 3) {
-      
-        // } else {
-        //     countDown.innerHTML = 3 - counter;
-        // }
-        if (counter == crashtime) {
-            clearInterval(countFunction);
-            playExplosion();
+
+var timer;
+function repeatOften() {
+    // Do whatever
+    console.log("frame")
+    counter+=2;
+    // if (counter == 3) {
+  
+    // } else {
+    //     countDown.innerHTML = 3 - counter;
+    // }
+    if (counter == crashtime) {
+        cancelAnimationFrame(timer);
+        playExplosion();
+        return;
+    }
+    if(counter < crashtime) {
+        if((counter / 200) > 1) {
+        rocket.style.setProperty("--animation-speed", (1 / (counter / 200)) + "s");
+        } else {
+            rocket.style.setProperty("--animation-speed", (1) + "s");
         }
-        if(counter < crashtime) {
-            if((counter / 200) > 1) {
-            rocket.style.setProperty("--animation-speed", (1 / (counter / 200)) + "s");
-            } else {
-                rocket.style.setProperty("--animation-speed", (1) + "s");
-            }
-        }
-        score.innerHTML =  (counter / 200).toFixed(2) + "x";
-    }, 10);
+    }
+    score.innerHTML =  (counter / 200).toFixed(2) + "x";
+    timer = window.requestAnimationFrame(repeatOften);
 }
+
+function runTimer() {
+    timer = window.requestAnimationFrame(repeatOften);
+    setPanel("game-screen");
+    // countFunction = setInterval(() => {
+    //     counter++;
+    //     // if (counter == 3) {
+      
+    //     // } else {
+    //     //     countDown.innerHTML = 3 - counter;
+    //     // }
+    //     if (counter == crashtime) {
+    //         clearInterval(countFunction);
+    //         playExplosion();
+    //     }
+    //     if(counter < crashtime) {
+    //         if((counter / 200) > 1) {
+    //         rocket.style.setProperty("--animation-speed", (1 / (counter / 200)) + "s");
+    //         } else {
+    //             rocket.style.setProperty("--animation-speed", (1) + "s");
+    //         }
+    //     }
+    //     score.innerHTML =  (counter / 200).toFixed(2) + "x";
+    // }, 10);
+}
+
 function playExplosion() {
     explosion.style.visibility = "visible";
     rocket.style.setProperty("--animation-speed", "0s");
@@ -147,7 +176,7 @@ function playExplosion() {
 function stopPlaying() {
     balanceText.innerHTML = "Current Balance: " + balance;
     setPanel("start-screen");
-    clearInterval(countFunction);
+    cancelAnimationFrame(timer);
     counter = 0;
     setListeners(true);
 }
